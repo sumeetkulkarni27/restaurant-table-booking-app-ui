@@ -5,7 +5,7 @@ import { EnvironmentConfiguration } from "../app/models/environment-configuratio
 
 
 
-const localhostUrl = 'https://localhost:44351/api';
+const localhostUrl = 'https://localhost:7195/api';
 const serverUrl = 'https://lsc-table-booking-app-api.azurewebsites.net/api';
 
 // The list of file replacements can be found in `angular.json`.
@@ -18,14 +18,14 @@ export const environment: EnvironmentConfiguration = {
     getRestaurantBranches: 'Restaurant/branches',
     getDiningTables: 'Restaurant/diningtables',
     updateReservation: 'Reservation/CheckIn',
-    saveReservation: 'Restaurant',
+    saveReservation: 'Reservation',
     getReservationDetails:'Restaurant/getreservations'
   },
   adb2cConfig: {
-    clientId: '302bc019-f861-4ba4-971d-bf1b2c2b2cae',
-    readScopeUrl: 'https://learnsmartcoding.onmicrosoft.com/restaurant/api/Booking.Read',
-    writeScopeUrl: 'https://learnsmartcoding.onmicrosoft.com/restaurant/api/Booking.Write',
-    apiEndpointUrl: 'https://localhost:44351/api/Reservation'
+    clientId: '58273938-f69c-4b5f-968d-9e28a008f049',
+    readScopeUrl: 'api://ce8c252c-6999-424b-af71-26f278522bd3/Booking.Read',
+    writeScopeUrl: 'api://ce8c252c-6999-424b-af71-26f278522bd3/Booking.Write',
+    apiEndpointUrl: 'https://localhost:7195/api/Reservation'
   },
   cacheTimeInMinutes: 30,
 };

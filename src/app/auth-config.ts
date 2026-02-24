@@ -17,22 +17,22 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
  */
 export const b2cPolicies = {
     names: {
-        signUpSignIn: 'B2C_1_susi',
+        signUpSignIn: 'SignUp',
         resetPassword: 'B2C_1_password_reset',
-        editProfile: 'B2C_1_profile_edit',
+        editProfile: 'profile_edit',
     },
     authorities: {
         signUpSignIn: {
-            authority: 'https://learnsmartcoding.b2clogin.com/learnsmartcoding.onmicrosoft.com/B2C_1_susi',
+            authority: 'https://skworld27.ciamlogin.com/6e6d0a0a-c380-45ea-b49e-e33c3f8123ae',
         },
         resetPassword: {
-            authority: 'https://learnsmartcoding.b2clogin.com/learnsmartcoding.onmicrosoft.com/B2C_1_password_reset',
+            authority: 'https://skworld27.ciamlogin.com/B2C_1_password_reset',
         },
         editProfile: {
-            authority: 'https://learnsmartcoding.b2clogin.com/learnsmartcoding.onmicrosoft.com/B2C_1_profile_edit',
+            authority: 'https://skworld27.ciamlogin.com/profile_edit',
         },
     },
-    authorityDomain: 'learnsmartcoding.b2clogin.com',
+    authorityDomain: 'skworld27.ciamlogin.com',
 };
 
 /**
@@ -88,6 +88,8 @@ export const msalConfig: Configuration = {
 * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
 */
 export const loginRequest = {
-  scopes: []
+  scopes: [
+    
+  ]
 };
 

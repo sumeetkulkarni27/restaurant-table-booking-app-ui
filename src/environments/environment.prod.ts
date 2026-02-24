@@ -18,10 +18,10 @@ export const environment: EnvironmentConfiguration = {
     getReservationDetails:'Reservation/getreservations'
   },
   adb2cConfig: {
-    clientId: '5c0e7370-f833-4cb1-a9c1-ad683586adac',
-    readScopeUrl: 'https://learnsmartcoding.onmicrosoft.com/restaurant/prod/api/Booking.Read',
-    writeScopeUrl: 'https://learnsmartcoding.onmicrosoft.com/restaurant/prod/api/Booking.Write',
-    apiEndpointUrl: 'https://lsc-table-booking-app-api.azurewebsites.net/api/Reservation'
+    clientId: '58273938-f69c-4b5f-968d-9e28a008f049',
+    readScopeUrl: 'api://ce8c252c-6999-424b-af71-26f278522bd3/Booking.Read',
+    writeScopeUrl: 'api://ce8c252c-6999-424b-af71-26f278522bd3/Booking.Write',
+    apiEndpointUrl: 'https://localhost:7195/api/Reservation'
   },
   cacheTimeInMinutes: 30,
 };

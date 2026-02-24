@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and a/* lso import other style files * */
+.navbar {
+  padding: 1rem 0;
+}
+
+.nav-link.active {
+  font-weight: 600;
+  color: #0d6efd !important;
+}
+
+.btn-primary {
+  border-radius: 50px;
+}
+
+header {
+  transition: all 0.3s ease-in-out;
+}

@@ -9,7 +9,7 @@
     "test": "ng test"
   },
   "private": true,
-   "dependencies": {
+  "dependencies": {
     "@angular/animations": "^16.1.0",
     "@angular/common": "^16.1.0",
     "@angular/compiler": "^16.1.0",
@@ -20,6 +20,7 @@
     "@angular/router": "^16.1.0",
     "@azure/msal-angular": "^3.0.4",
     "@azure/msal-browser": "^3.1.0",
+    "bootstrap": "^5.3.8",
     "ngx-bootstrap": "^11.0.2",
     "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.0",

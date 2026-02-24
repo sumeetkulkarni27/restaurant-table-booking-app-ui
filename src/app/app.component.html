@@ -1,57 +1,112 @@
-
-<div class="overlay show" *ngIf="spinnerService.spinnerCounter$ | async">
-  <div class="spinner-border" role="status">
+<!-- Spinner Overlay -->
+<div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-50"
+     style="z-index: 1055;"
+     *ngIf="spinnerService.spinnerCounter$ | async">
+  <div class="spinner-border text-light" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-<!-- <app-header></app-header> -->
-<!-- ======= Header ======= -->
-<header id="header" class="header fixed-top d-flex align-items-center">
-  <div class="container d-flex align-items-center justify-content-between">
 
-    <a href="https://youtube.com/@learnsmartcoding" class="logo d-flex align-items-center me-auto me-lg-0">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="assets/img/logo.png" alt=""> -->
-      <h1><span><img src="../../assets/custom/Learn Smart Coding Logo white bg.png"></span></h1>
+<!-- ======= Header ======= -->
+<header class="fixed-top shadow-sm bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light container">
+
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <img src="../../assets/custom/Learn Smart Coding Logo white bg.png"
+           height="45"
+           class="me-2"
+           alt="Logo">
     </a>
 
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a href="#" [routerLink]="['/home']" routerLinkActive="router-link-active"  >Home</a></li>
-        <li><a href="#" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a></li>
-        <li><a href="#" [routerLink]="['/menu']" routerLinkActive="router-link-active" >Menu</a></li>
-        <li><a href="#" [routerLink]="['/events']" routerLinkActive="router-link-active" >Events</a></li>
-        <li><a href="#" [routerLink]="['/chefs']" routerLinkActive="router-link-active" >Chefs</a></li>
-        <li><a href="#" [routerLink]="['/gallery']" routerLinkActive="router-link-active" >Gallery</a></li>      
-        <li><a href="#" [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a></li>
-        <li class="dropdown"><a href="#"><span>Action</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-          <ul>
-            <li><a [routerLink]="['/claims']" routerLinkActive="router-link-active"  *ngIf="loginDisplay">Claims</a></li>    
-            <li><a [routerLink]="['/reservations']" routerLinkActive="router-link-active"  *ngIf="loginDisplay">Reservations</a></li>  
-            <li><a *ngIf="loginDisplay" (click)="editProfile()">Edit Profile</a></li>
-            <li><a *ngIf="!loginDisplay" (click)="login()">Login</a></li>
-            <li><a *ngIf="loginDisplay" (click)="logout()">Logout</a></li>           
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu" routerLinkActive="active">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/chefs" routerLinkActive="active">Chefs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gallery" routerLinkActive="active">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"
+             role="button"
+             data-bs-toggle="dropdown">
+            Action
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+
+            <li *ngIf="loginDisplay">
+              <a class="dropdown-item" routerLink="/claims">Claims</a>
+            </li>
+
+            <li *ngIf="loginDisplay">
+              <a class="dropdown-item" routerLink="/reservations">Reservations</a>
+            </li>
+
+            <li *ngIf="loginDisplay">
+              <a class="dropdown-item" (click)="editProfile()">Edit Profile</a>
+            </li>
+
+            <li *ngIf="!loginDisplay">
+              <a class="dropdown-item" (click)="login()">Login</a>
+            </li>
+
+            <li *ngIf="loginDisplay">
+              <a class="dropdown-item text-danger" (click)="logout()">Logout</a>
+            </li>
+
           </ul>
         </li>
-       
-    
+
+        <!-- Book Button -->
+        <li class="nav-item ms-lg-3">
+          <a class="btn btn-primary px-4"
+             routerLink="/book-a-table">
+            Book a Tae
+          </a>
+        </li>
+
       </ul>
-    </nav><!-- .navbar -->
+    </div>
 
-    <a class="btn-book-a-table" href="#" [routerLink]="['/book-a-table']" routerLinkActive="router-link-active" >Book a Table</a>
-    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+  </nav>
+</header>
 
-  </div>
-</header><!-- End Header -->
-
-<main id="main">
-  
-  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+<!-- Main -->
+<main class="mt-5 pt-5">
   <router-outlet *ngIf="!isIframe"></router-outlet>
-</main><!-- End #main -->
-<app-footer></app-footer>
-<!-- End Footer -->
-<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</main>
 
-<div id="preloader"></div>
+<app-footer></app-footer>
