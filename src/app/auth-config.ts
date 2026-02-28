@@ -15,24 +15,28 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
  * To learn more about user flows, visit https://docs.microsoft.com/en-us/azure/active-directory-b2c/user-flow-overview
  * To learn more about custom policies, visit https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
+
+const CIAM_AUTHORITY = 'https://skworld27.ciamlogin.com/6e6d0a0a-c380-45ea-b49e-e33c3f8123ae';
+const CIAM_DOMAIN = 'skworld27.ciamlogin.com';
+
 export const b2cPolicies = {
     names: {
         signUpSignIn: 'SignUp',
-        resetPassword: 'B2C_1_password_reset',
-        editProfile: 'profile_edit',
+        resetPassword: 'resetPassword',
+        editProfile: 'editProfile',
     },
     authorities: {
         signUpSignIn: {
-            authority: 'https://skworld27.ciamlogin.com/6e6d0a0a-c380-45ea-b49e-e33c3f8123ae',
+            authority: CIAM_AUTHORITY,
         },
         resetPassword: {
-            authority: 'https://skworld27.ciamlogin.com/B2C_1_password_reset',
+            authority: CIAM_AUTHORITY,
         },
         editProfile: {
-            authority: 'https://skworld27.ciamlogin.com/profile_edit',
+            authority: CIAM_AUTHORITY,
         },
     },
-    authorityDomain: 'skworld27.ciamlogin.com',
+    authorityDomain: CIAM_DOMAIN
 };
 
 /**
@@ -43,8 +47,8 @@ export const b2cPolicies = {
 export const msalConfig: Configuration = {
     auth: {
         clientId: environment.adb2cConfig.clientId, // This is the ONLY mandatory field that you need to supply.
-        authority: b2cPolicies.authorities.signUpSignIn.authority, // Defaults to "https://login.microsoftonline.com/common"
-        knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
+        authority: CIAM_AUTHORITY, // Defaults to "https://login.microsoftonline.com/common"
+        knownAuthorities: [CIAM_DOMAIN], // Mark your B2C tenant's domain as trusted.
         redirectUri: '/', // Points to window.location.origin by default. You must register this URI on Azure portal/App Registration.
         postLogoutRedirectUri: '/', // Points to window.location.origin by default.
     },
@@ -71,14 +75,14 @@ export const msalConfig: Configuration = {
  * Add here the endpoints and scopes when obtaining an access token for protected web APIs. For more information, see:
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
  */
- export const protectedResources = {
+export const protectedResources = {
     api: {
-      endpoint: environment.adb2cConfig.apiEndpointUrl,
-      scopes: {
-          read: [environment.adb2cConfig.readScopeUrl],
-          write: [environment.adb2cConfig.writeScopeUrl]
-      }
-  }
+        endpoint: environment.adb2cConfig.apiEndpointUrl,
+        scopes: {
+            read: [environment.adb2cConfig.readScopeUrl],
+            write: [environment.adb2cConfig.writeScopeUrl]
+        }
+    }
 }
 
 /**
@@ -88,8 +92,10 @@ export const msalConfig: Configuration = {
 * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
 */
 export const loginRequest = {
-  scopes: [
-    
-  ]
+    scopes: [
+        environment.adb2cConfig.readScopeUrl,
+        environment.adb2cConfig.writeScopeUrl
+
+    ]
 };
 
