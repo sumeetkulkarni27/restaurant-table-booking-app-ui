@@ -19,7 +19,7 @@ type IdTokenClaimsWithPolicyId = IdTokenClaims & {
 export class AppComponent {
     //title = 'lsc-restaurant-table-booking-app';
     //constructor(public spinnerService: SpinnerService){}
-    title = 'Microsoft identity platform';
+    title = 'Table Booking App';
     isIframe = false;
     loginDisplay = false;
     private readonly _destroying$ = new Subject<void>();

@@ -6,24 +6,11 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MsalService, MSAL_GUARD_CONFIG, MsalGuard } from '@azure/msal-angular';
+import { configureTestingModule } from './shared/test-utils/test-utils';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientTestingModule
-      ],
-      declarations: [AppComponent],
-      providers: [
-        MsalService,
-        MsalGuard,
-        { provide: MSAL_GUARD_CONFIG, useValue: {} } // Mock MSAL config
-      ],
-      schemas: [NO_ERRORS_SCHEMA] // Ignore unknown elements like routerLink, ngx-bootstrap tags, etc.
-    }).compileComponents();
+    await configureTestingModule([AppComponent]);
   });
 
   it('should create the app', () => {
@@ -32,18 +19,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'lsc-restaurant-table-booking-app'`, () => {
+  it(`should have as title 'Table Booking App'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('lsc-restaurant-table-booking-app');
+    expect(app.title).toEqual('Table Booking App');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'restaurant-table-booking-app app is running!'
+    expect(compiled.querySelector('.app-title')?.textContent).toContain(
+      'Table Booking App'
     );
   });
 });

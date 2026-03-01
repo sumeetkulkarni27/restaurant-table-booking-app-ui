@@ -35,8 +35,8 @@ export class CollectUserInfoComponent {
       lastName: [lastName, Validators.required],
       emailId: [email, [Validators.required, Validators.email]],
       phoneNumber: ['9876542140', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      timeSlotId: [this.selectedTable.timeSlotId, Validators.required],
-      reservationDate: [this.selectedTable.reservationDay, Validators.required],
+      timeSlotId: [this.selectedTable?.timeSlotId, Validators.required],
+      reservationDate: [this.selectedTable?.reservationDay, Validators.required],
       reservationStatus: ['Booked'] // You can set a default value if needed
     });
   }
