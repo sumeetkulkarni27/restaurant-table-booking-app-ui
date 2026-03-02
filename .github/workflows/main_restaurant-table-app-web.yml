@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    timeout-minutes: 20 
     permissions:
       contents: read
 
@@ -21,11 +22,14 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: Install dependencies and build Angular app
-        run: |
-          npm install
-          npm run build
-          npm run test --if-present
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular app
+        run: npm run build -- --configuration production
+
+      - name: Run tests (CI mode)
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
 
       - name: Upload Angular build output
         uses: actions/upload-artifact@v4
@@ -59,3 +63,4 @@ jobs:
           app-name: 'restaurant-table-app-web'
           slot-name: 'Production'
           package: ./dist/restaurant-table-app-ui
+
