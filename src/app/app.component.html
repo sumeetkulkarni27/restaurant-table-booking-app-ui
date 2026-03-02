@@ -1,28 +1,25 @@
 <!-- Spinner Overlay -->
-<div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-50"
-     style="z-index: 1055;"
-     *ngIf="spinnerService.spinnerCounter$ | async">
+<div
+  class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-50"
+  style="z-index: 1055;" *ngIf="spinnerService.spinnerCounter$ | async">
   <div class="spinner-border text-light" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-
+<a class="navbar-brand d-flex align-items-center" routerLink="/home">
+  <span class="app-title fw-bold">Table Booking App</span>
+</a>
 <!-- ======= Header ======= -->
 <header class="fixed-top shadow-sm bg-white">
   <nav class="navbar navbar-expand-lg navbar-light container">
 
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-      <img src="../../assets/custom/Learn Smart Coding Logo white bg.png"
-           height="45"
-           class="me-2"
-           alt="Logo">
+      <img src="../../assets/custom/Learn Smart Coding Logo white bg.png" height="45" class="me-2" alt="Logo">
     </a>
 
     <!-- Mobile Toggle -->
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -60,9 +57,7 @@
 
         <!-- Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"
-             role="button"
-             data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
             Action
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow">
@@ -92,8 +87,7 @@
 
         <!-- Book Button -->
         <li class="nav-item ms-lg-3">
-          <a class="btn btn-primary px-4"
-             routerLink="/book-a-table">
+          <a class="btn btn-primary px-4" routerLink="/book-a-table">
             Book a Tae
           </a>
         </li>
