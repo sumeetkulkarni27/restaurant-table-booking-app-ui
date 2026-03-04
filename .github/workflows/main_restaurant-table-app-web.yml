@@ -53,9 +53,9 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_72B3CAE7DFE04B25AF446808DD618A44 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9D025C1DADCD4064AFCEDF9E7501EA23 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B54B4D038343436E993C031BA9BE55A6 }}
 
       # Deploy with CLEAN
       - name: Deploy to Azure Web App
@@ -65,3 +65,4 @@ jobs:
           slot-name: Production
           package: build
           clean: true
+
