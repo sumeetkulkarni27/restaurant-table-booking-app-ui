@@ -1,4 +1,4 @@
-name: Build and Deploy Angular App to Azure
+name: Build and Deploy Angular App to Azure Web App
 
 on:
   push:
@@ -7,57 +7,54 @@ on:
   workflow_dispatch:
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
 
     steps:
-      # Checkout
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Setup Node
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: 20
 
-      # Install dependencies
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
-      # Build Angular
-      - name: Build Angular app (production)
+      - name: Build Angular App
         run: npm run build -- --configuration production
 
-      # Upload build output (flattened)
-      - name: Upload artifact
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: angular-build
-          path: dist/restaurant-table-app-ui/*
+          path: dist
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
+    # 🔥 THIS FIXES YOUR ERROR
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
-      # Download artifact
-      - name: Download artifact
+      - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: angular-build
           path: build
 
-      # Azure login
-      - name: Azure Login
+      - name: Azure Login (OIDC)
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_72B3CAE7DFE04B25AF446808DD618A44 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9D025C1DADCD4064AFCEDF9E7501EA23 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B54B4D038343436E993C031BA9BE55A6 }}
 
-      # Deploy with CLEAN
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
