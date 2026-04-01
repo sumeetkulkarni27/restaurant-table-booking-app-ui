@@ -3,7 +3,6 @@ import { SpinnerService } from './service/spinner.service';
 import { AccountInfo, AuthenticationResult, EventMessage, EventType, IdTokenClaims, InteractionStatus, InteractionType, PopupRequest, PromptValue, RedirectRequest, SsoSilentRequest } from '@azure/msal-browser';
 import { MSAL_GUARD_CONFIG, MsalGuardConfiguration, MsalService, MsalBroadcastService } from '@azure/msal-angular';
 import { Subject, filter, takeUntil } from 'rxjs';
-import { b2cPolicies } from './auth-config';
 
 type IdTokenClaimsWithPolicyId = IdTokenClaims & {
     acr?: string,
